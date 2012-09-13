@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   
+   <groupId>org.adrianchia</groupId>
+   <artifactId>cas-webapp-jboss7</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
+   <packaging>war</packaging>
+   
+   <name>CAS Server Web Application for JBoss 7</name>
+   <description>Unofficial CAS Server Web Application for JBoss 7</description>
+   <url>https://github.com/adrianchia/cas-webapp-jboss7</url>
+   
+   <licenses>
+      <license>
+         <name>Apache 2</name>
+         <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+         <distribution>repo</distribution>
+      </license>
+   </licenses>
+   
+   <developers>
+      <developer>
+         <name>Adrian Chia</name>
+         <email>adrianchia2003@hotmail.com</email>
+         <roles>
+            <role>developer</role>
+         </roles>
+      </developer>
+   </developers>
+   
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+   </properties>
+   
+   <scm>
+      <connection>scm:git:git://github.com/adrianchia/cas-webapp-jboss7.git</connection>
+      <developerConnection>scm:git:git@github.com:adrianchia/cas-webapp-jboss7.git</developerConnection>
+      <url>https://github.com/adrianchia/cas-webapp-jboss7</url>
+   </scm>
+   
+   <repositories>
+      <repository>
+	     <id>jboss-public-repository</id>
+		 <name>JBoss Public Repository Group</name>
+		 <url>http://repository.jboss.org/nexus/content/groups/public</url>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+		 <releases>
+		    <enabled>true</enabled>
+		 </releases>
+	  </repository>
+   </repositories>
+   <pluginRepositories>
+      <pluginRepository>
+         <id>jboss-repo-group</id>
+         <name>JBoss Public Repository Group</name>
+         <url>http://repository.jboss.org/nexus/content/groups/public</url>
+         <snapshots>
+            <enabled>false</enabled>
+         </snapshots>
+      </pluginRepository>
+   </pluginRepositories>
+</project>
