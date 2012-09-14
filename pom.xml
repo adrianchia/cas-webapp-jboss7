@@ -30,10 +30,555 @@
       </developer>
    </developers>
    
+   <dependencyManagement>
+      <dependencies>
+         <dependency>
+            <groupId>org.jboss.bom</groupId>
+            <artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
+            <version>${version.jboss.bom}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+         <!-- 
+         <dependency>
+            <groupId>org.jasig.cas</groupId>
+            <artifactId>cas-server</artifactId>
+            <version>${version.cas.server}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+          -->
+      </dependencies>
+   </dependencyManagement>
+   
+   <dependencies>
+      <!-- Import the Common Annotations API (JSR-250), we use provided 
+           scope as the API is included in JBoss AS 7 -->
+      <dependency>
+         <groupId>org.jboss.spec.javax.annotation</groupId>
+         <artifactId>jboss-annotations-api_1.1_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      
+      <!-- Import the Servlet API, we use provided scope as the API is included 
+         in JBoss AS 7 -->
+      <dependency>
+         <groupId>org.jboss.spec.javax.servlet</groupId>
+         <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      
+      <dependency>
+         <groupId>org.jboss.spec.javax.servlet.jsp</groupId>
+         <artifactId>jboss-jsp-api_2.2_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      
+      <dependency>
+         <groupId>org.jboss.spec.javax.servlet.jstl</groupId>
+         <artifactId>jboss-jstl-api_1.2_spec</artifactId>
+         <scope>provided</scope>
+      </dependency>
+   
+      <!-- Import the JPA API, we use provided scope as the API is included 
+           in JBoss AS 7 -->
+      <dependency>
+         <groupId>org.hibernate.javax.persistence</groupId>
+         <artifactId>hibernate-jpa-2.0-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-core</artifactId>
+         <scope>provided</scope>
+	  </dependency>
+	  
+	  <dependency>
+	     <groupId>org.hibernate</groupId>
+	     <artifactId>hibernate-entitymanager</artifactId>
+	     <scope>provided</scope>
+	  </dependency>
+	  
+	  <!-- Annotation processor to generate the JPA 2.0 metamodel classes 
+           for typesafe criteria queries -->
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-jpamodelgen</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      
+      <!-- Annotation processor that raising compilation errors whenever 
+           constraint annotations are incorrectly used. -->
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-validator-annotation-processor</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      
+      <!-- JSR-303 (Bean Validation) Implementation -->
+      <!-- Provides portable constraints such as @Email -->
+      <!-- Hibernate Validator is shipped in JBoss AS 7 -->
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-validator</artifactId>
+         <scope>provided</scope>
+         <exclusions>
+            <exclusion>
+               <groupId>org.slf4j</groupId>
+               <artifactId>slf4j-api</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>log4j</groupId>
+         <artifactId>log4j</artifactId>
+         <version>${version.log4j}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+         <version>${version.slf4j}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-log4j12</artifactId>
+         <version>${version.slf4j}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>jcl-over-slf4j</artifactId>
+         <version>${version.slf4j}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>log4j-over-slf4j</artifactId>
+         <version>1.6.1</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>xalan</groupId>
+         <artifactId>xalan</artifactId>
+         <version>${version.xalan}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>xerces</groupId>
+         <artifactId>xercesImpl</artifactId>
+         <version>2.10.0</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>javax.validation</groupId>
+         <artifactId>validation-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>com.sun.xml.bind</groupId>
+         <artifactId>jaxb-impl</artifactId>
+         <version>${version.jaxb.impl}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>commons-beanutils</groupId>
+         <artifactId>commons-beanutils</artifactId>
+         <version>${version.commons.beanutils}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>commons-codec</groupId>
+         <artifactId>commons-codec</artifactId>
+         <version>${version.commons.codec}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>commons-collections</groupId>
+         <artifactId>commons-collections</artifactId>
+         <version>${version.commons.collection}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>commons-httpclient</groupId>
+         <artifactId>commons-httpclient</artifactId>
+         <version>${version.commons.httpclient}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>commons-io</groupId>
+         <artifactId>commons-io</artifactId>
+         <version>${version.commons.io}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>commons-lang</groupId>
+         <artifactId>commons-lang</artifactId>
+         <version>${version.commons.lang}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>commons-logging</groupId>
+         <artifactId>commons-logging</artifactId>
+         <version>${version.commons.logging}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>org.apache.santuario</groupId>
+         <artifactId>xmlsec</artifactId>
+         <version>${version.xmlsec}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>org.codehaus.jettison</groupId>
+         <artifactId>jettison</artifactId>
+         <version>${version.jettison}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>velocity</groupId>
+         <artifactId>velocity</artifactId>
+         <version>${version.velocity}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>xml-apis</groupId>
+         <artifactId>xml-apis</artifactId>
+         <version>${version.xmlapis}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>net.jcip</groupId>
+         <artifactId>jcip-annotations</artifactId>
+         <version>${version.jcip.annotations}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JBoss Module -->
+      <dependency>
+         <groupId>joda-time</groupId>
+         <artifactId>joda-time</artifactId>
+         <version>${version.jodatime}</version>
+         <scope>provided</scope>
+      </dependency>    
+      
+      <!-- Spring Dependencies -->  
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-aop</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-asm</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-beans</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-context</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-context-support</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-core</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-expression</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-jdbc</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-orm</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-core</artifactId>
+         <version>${version.spring.framework}</version>
+         <scope>compile</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-web</artifactId>
+         <version>${version.spring.framework}</version>
+         <scope>compile</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-cas</artifactId>
+         <version>${version.spring.framework}</version>
+         <scope>runtime</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-config</artifactId>
+         <version>${version.spring.framework}</version>
+         <scope>runtime</scope>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-tx</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-web</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework.webflow</groupId>
+         <artifactId>spring-webflow</artifactId>
+         <version>${version.spring.webflow}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-webmvc</artifactId>
+         <version>${version.spring.framework}</version>
+      </dependency>
+      
+       <!-- Third Party Dependencies Required By Spring -->
+      <dependency>
+         <groupId>org.quartz-scheduler</groupId>
+         <artifactId>quartz</artifactId>
+         <version>${version.quartz.version}</version>
+      </dependency>
+     
+      <dependency>
+         <groupId>aopalliance</groupId>
+         <artifactId>aopalliance</artifactId>
+         <version>${version.aopalliance}</version>
+      </dependency>
+      
+      <dependency>
+         <groupId>taglibs</groupId>
+         <artifactId>standard</artifactId>
+         <version>${version.standard.taglibs}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>com.github.inspektr</groupId>
+         <artifactId>inspektr-support-spring</artifactId>
+         <version>${version.github.inspektr}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.jasig.cas</groupId>
+         <artifactId>cas-server-core</artifactId>
+         <version>${version.cas.server}</version>
+         <exclusions>
+            <exclusion>
+               <groupId>javax.activation</groupId>
+               <artifactId>activation</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+        
+      <dependency>
+         <groupId>org.jasig.cas.client</groupId>
+         <artifactId>cas-client-core</artifactId>
+         <version>3.2.1</version>
+         <exclusions>
+            <exclusion>
+               <groupId>javax.servlet</groupId>
+               <artifactId>servlet-api</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      
+      <dependency>
+         <groupId>net.sf.spring-json</groupId>
+         <artifactId>spring-json</artifactId>
+         <version>1.3.1</version>
+         <!-- <scope>runtime</scope> -->
+         <exclusions>
+            <exclusion>
+               <groupId>net.sf.sojo</groupId>
+               <artifactId>sojo-optional</artifactId>
+            </exclusion>
+            <exclusion>
+               <groupId>org.springframework</groupId>
+               <artifactId>*</artifactId>
+            </exclusion>
+            <exclusion>
+               <groupId>javax.servlet</groupId>
+               <artifactId>servlet-api</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      
+      <dependency>
+         <groupId>net.sf.sojo</groupId>
+         <artifactId>sojo</artifactId>
+         <version>${version.sojo}</version>
+         <exclusions>
+            <exclusion>
+               <groupId>commons-attributes</groupId>
+               <artifactId>*</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      
+      <dependency>
+         <groupId>ognl</groupId>
+         <artifactId>ognl</artifactId>
+         <version>2.7.3</version>
+         <scope>runtime</scope>
+         <exclusions>
+            <exclusion>
+               <groupId>jboss</groupId>
+               <artifactId>javassist</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      
+      <!-- For Testing -->   
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>${version.junit}</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
+   
+   <build>
+      <finalName>cas</finalName>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${version.compiler.plugin}</version>
+            <configuration>
+               <source>1.6</source>
+               <target>1.6</target>
+            </configuration>
+         </plugin>
+         
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>${version.war.plugin}</version>
+            <configuration>
+               <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+         </plugin>
+         
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${version.surefire.plugin}</version>
+         </plugin>
+         
+         <!-- The JBoss AS plugin deploys your war to a local JBoss AS 
+              container -->
+         <!-- To use, run: mvn package jboss-as:deploy -->
+         <plugin>
+            <groupId>org.jboss.as.plugins</groupId>
+            <artifactId>jboss-as-maven-plugin</artifactId>
+            <version>7.1.1.Final</version>
+         </plugin>
+      </plugins>
+   </build>
+   
+   <profiles>
+      <profile>
+         <!-- When built in OpenShift the 'openshift' profile will be 
+              used when invoking mvn. -->
+         <!-- Use this profile for any OpenShift specific customization 
+              your app will need. -->
+         <!-- By default that is to put the resulting archive into the 
+              'deployments' folder. -->
+         <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
+         <id>openshift</id>
+         <build>
+            <plugins>
+               <plugin>
+                  <artifactId>maven-war-plugin</artifactId>
+                  <version>${version.war.plugin}</version>
+                  <configuration>
+                     <outputDirectory>deployments</outputDirectory>
+                     <warName>ROOT</warName>
+                  </configuration>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+   </profiles>
+   
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <version.aopalliance>1.0</version.aopalliance>
+      <version.cas.server>3.5.1-SNAPSHOT</version.cas.server>
+      <version.cas.client>3.2.1</version.cas.client>
+      <version.commons.beanutils>1.8.3</version.commons.beanutils>
+      <version.commons.codec>1.4</version.commons.codec>
+      <version.commons.collection>3.2</version.commons.collection>
+      <version.commons.httpclient>3.1</version.commons.httpclient>
+      <version.commons.io>2.1</version.commons.io>
+      <version.commons.lang>2.6</version.commons.lang>
+      <version.commons.logging>1.1.1</version.commons.logging>
+      <version.compiler.plugin>2.5.1</version.compiler.plugin>
+      <version.github.inspektr>1.0.7.GA</version.github.inspektr>
+      <version.jaxb.impl>2.2.5</version.jaxb.impl>
+      <version.jboss.bom>1.0.1.CR4</version.jboss.bom>
+      <version.jcip.annotations>1.0</version.jcip.annotations>
+      <version.jettison>1.3.1</version.jettison>
+      <version.jodatime>1.6.2</version.jodatime>
+      <version.junit>4.10</version.junit>
+      <version.log4j>1.2.17</version.log4j>
+      <version.quartz.version>1.8.6</version.quartz.version>
+      <version.slf4j>1.7.0</version.slf4j>
+      <version.sojo>1.0.5</version.sojo>
+      <version.spring.framework>3.1.2.RELEASE</version.spring.framework>
+      <version.spring.webflow>2.3.1.RELEASE</version.spring.webflow>
+      <version.standard.taglibs>1.1.2</version.standard.taglibs>
+      <version.surefire.plugin>2.12.3</version.surefire.plugin>
+      <version.validation>1.0.0.GA</version.validation>
+      <version.velocity>1.5</version.velocity>
+      <version.war.plugin>2.2</version.war.plugin>
+      <version.xalan>2.7.1</version.xalan>
+      <version.xmlapis>1.4.01</version.xmlapis>
+      <version.xmlsec>1.5.1</version.xmlsec>
    </properties>
-   
+
    <scm>
       <connection>scm:git:git://github.com/adrianchia/cas-webapp-jboss7.git</connection>
       <developerConnection>scm:git:git@github.com:adrianchia/cas-webapp-jboss7.git</developerConnection>
@@ -41,6 +586,11 @@
    </scm>
    
    <repositories>
+      <repository>
+         <id>jasig-snapshot-repository</id>
+         <name>Jasig Snapshot Repository</name>
+         <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      </repository>
       <repository>
 	     <id>jboss-public-repository</id>
 		 <name>JBoss Public Repository Group</name>
