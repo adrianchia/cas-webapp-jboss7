@@ -11,8 +11,8 @@ By default the application server only have 1 connector, i.e. HTTP connector. To
  
         keytool -genkey -alias tomcat -keypass changeit -keyalg RSA
 
-   * remember to change the alias and keypass to your preference.
-   * one caveat for the following question: ``What is your first and last name?`` is that it should be the server hostname.
+       * remember to change the alias and keypass to your preference.
+       * one caveat for the following question: ``What is your first and last name?`` is that it should be the server hostname.
    
 2. Once you ge the keystore file (usually in your user_home directory), copy over to your standalone/configuration folder.
 
