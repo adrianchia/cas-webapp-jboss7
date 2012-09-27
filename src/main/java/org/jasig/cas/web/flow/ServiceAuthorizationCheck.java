@@ -16,10 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.jasig.cas.web.flow;
-
-import javax.validation.constraints.NotNull;
 
 import org.jasig.cas.authentication.principal.Service;
 import org.jasig.cas.services.RegisteredService;
@@ -31,6 +28,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.webflow.action.AbstractAction;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
+import org.springframework.webflow.test.MockRequestContext;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Performs a basic check if an authentication request for a provided service is authorized to proceed
@@ -39,8 +39,8 @@ import org.springframework.webflow.execution.RequestContext;
  * @author Dmitriy Kopylenko
  * @since 3.5.1
  */
-public class ServiceAuthorizationCheck extends AbstractAction {
-	
+public final class ServiceAuthorizationCheck extends AbstractAction {
+
 	@NotNull
 	private final ServicesManager servicesManager;
 
@@ -51,7 +51,7 @@ public class ServiceAuthorizationCheck extends AbstractAction {
 	}
 
 	@Override
-	protected Event doExecute(RequestContext context) throws Exception {
+	protected Event doExecute(final RequestContext context) throws Exception {
 		final Service service = WebUtils.getService(context);
 		//No service == plain /login request. Return success indicating transition to the login form
 		if(service == null) {
@@ -70,5 +70,4 @@ public class ServiceAuthorizationCheck extends AbstractAction {
 
 		return success();
 	}
-
 }

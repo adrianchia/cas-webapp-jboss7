@@ -5,7 +5,7 @@
    
    <groupId>org.adrianchia</groupId>
    <artifactId>cas-webapp-jboss7</artifactId>
-   <version>0.0.1-SNAPSHOT</version>
+   <version>0.0.2-SNAPSHOT</version>
    <packaging>war</packaging>
    
    <name>CAS Server Web Application for JBoss 7</name>
@@ -546,7 +546,7 @@
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <version.aopalliance>1.0</version.aopalliance>
-      <version.cas.server>3.5.1-SNAPSHOT</version.cas.server>
+      <version.cas.server>3.5.1-RC1</version.cas.server>
       <version.cas.client>3.2.1</version.cas.client>
       <version.commons.beanutils>1.8.3</version.commons.beanutils>
       <version.commons.codec>1.4</version.commons.codec>
@@ -586,11 +586,13 @@
    </scm>
    
    <repositories>
+      <!--
       <repository>
          <id>jasig-snapshot-repository</id>
          <name>Jasig Snapshot Repository</name>
          <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
       </repository>
+      -->
       <repository>
 	     <id>jboss-public-repository</id>
 		 <name>JBoss Public Repository Group</name>
